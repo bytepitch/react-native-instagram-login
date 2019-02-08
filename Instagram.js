@@ -9,9 +9,11 @@ import {
   Modal,
   Dimensions,
   TouchableOpacity,
-  Image
+  Image,
+  Platform
 } from 'react-native'
 import qs from 'qs'
+import KeyboardSpacer from 'react-native-keyboard-spacer'
 
 const { width, height } = Dimensions.get('window')
 
@@ -125,6 +127,7 @@ export default class Instagram extends Component {
       >
         <View style={[styles.container, containerStyle]}>
           <View style={[styles.wrapper, wrapperStyle]}>{this.renderWebview()}</View>
+            {Platform.OS === "android" && <KeyboardSpacer/>}
           <TouchableOpacity
             onPress={() => this.onClose()}
             style={[styles.close, closeStyle]}
